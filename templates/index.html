@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tattoo Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 20px; }
+        .item { border: 1px solid #ccc; padding: 10px; border-radius: 8px; width: 200px; text-align: center; }
+        .item img { width: 180px; height: 180px; object-fit: cover; border-radius: 6px; }
+        .price { font-weight: bold; color: #2196F3; }
+    </style>
+</head>
+<body>
+    <h1>Tattoo Gallery</h1>
+    <div class="gallery">
+        {% for tattoo in tattoos %}
+        <div class="item">
+            <img src="{{ url_for('static', filename='images/' + tattoo.image) }}" alt="{{ tattoo.name }}">
+            <h3>{{ tattoo.name }}</h3>
+            <div class="price">Price: ${{ tattoo.price }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
